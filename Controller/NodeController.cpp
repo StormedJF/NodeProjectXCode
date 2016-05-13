@@ -301,17 +301,17 @@ void NodeController::tryGraphs()
     CTECGraph<int> * graph = new CTECGraph<int>();
     
     graph->addVertex(5);
-    graph->addEdge(0, 1);
+    graph->addEdge(0, 0);
     graph->addVertex(4);
-    graph->addEdge(1, 2);
+    graph->addEdge(1, 0);
     graph->addVertex(10);
-    graph->addEdge(2, 3);
+    graph->addEdge(0, 1);
     graph->addVertex(73);
-    graph->addEdge(3, 4);
+    graph->addEdge(2, 0);
     graph->addVertex(900531);
-    graph->addEdge(4, 5);
+    graph->addEdge(1, 2);
     graph->addVertex(-83);
-    graph->addEdge(5, 6);
+    graph->addEdge(0, 2);
     graph->addVertex(-54);
     
     graph->breadthFirstTraversal(*graph, -83);
