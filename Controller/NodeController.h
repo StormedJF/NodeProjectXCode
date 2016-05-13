@@ -32,6 +32,8 @@ private:
     void mergeSort(int data [], int size);
     void merge(int data [], int sizeOne, int sizeTwo);
     
+    void testHashTable();
+    
     void swap(int first, int second);
     void quicksort(int first, int last);
     int partition(int first, int last);

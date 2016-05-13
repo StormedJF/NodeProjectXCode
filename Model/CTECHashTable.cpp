@@ -76,7 +76,7 @@ void CTECHashTable<Type> :: add(HashNode<Type> currentNode)
             }
         }
         
-        internalStorage[insertionIndex] = currentNode;
+        internalStorage[insertionIndex] = &currentNode;
         size++;
     }
 }
@@ -181,7 +181,7 @@ void CTECHashTable<Type> :: updateCapacity()
     {
         if(internalStorage[index] != nullptr)
         {
-            int updatedIndex = findPosition(internalStorage[index]);
+            int updatedIndex = findPosition(*internalStorage[index]);
             largerStorage[updatedIndex] = internalStorage[index];
         }
     }
@@ -196,7 +196,7 @@ void CTECHashTable<Type> :: updateChainedCapacity()
     int oldChainedCapacity = chainedCapacity;
     chainedCapacity = updatedChainedCapaity;
     
-    CTECList<HashNode<Type>> * largerChainedStorage = new CTECList<HashNode<Type>>[updatedChainedCapaity];
+    CTECList<HashNode<Type>> ** largerChainedStorage = new CTECList<HashNode<Type>>[updatedChainedCapaity];
     
     for(int index = 0; index < oldChainedCapacity; index++)
     {
@@ -229,7 +229,7 @@ bool CTECHashTable<Type> :: contains(HashNode<Type> currentNode)
     
     while(internalStorage[possibleLocation] != nullptr && !isInTable)
     {
-        if(internalStorage[possibleLocation].getValue() == currentNode.getValue())
+        if(internalStorage[possibleLocation]->getValue() == currentNode.getValue())
         {
             isInTable = true;
         }
@@ -249,7 +249,7 @@ bool CTECHashTable<Type> :: remove(HashNode<Type> currentNode)
         
         while(internalStorage[possibleLocation] != nullptr && !hasBeenRemoved)
         {
-            if(internalStorage[possibleLocation].getValue() == currentNode.getValue())
+            if(internalStorage[possibleLocation]->getValue() == currentNode.getValue())
             {
                 hasBeenRemoved = true;
                 internalStorage[possibleLocation] = nullptr;

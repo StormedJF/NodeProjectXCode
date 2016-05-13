@@ -10,7 +10,7 @@
 #define CTECHashTable_hpp
 
 #include "HashNode.cpp"
-#include "CTECList.cpp"
+#include "CTECList.h"
 #include <stdio.h>
 
 template <class Type>
@@ -19,7 +19,7 @@ class CTECHashTable
 private:
     int size;
     int capacity;
-    HashNode<Type> * internalStorage;
+    HashNode<Type> ** internalStorage;
     void updateTableCapacity();
     
     int chainedCapacity;

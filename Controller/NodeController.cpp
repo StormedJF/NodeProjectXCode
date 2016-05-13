@@ -243,6 +243,32 @@ int NodeController::partition(int first, int last)
     return smallIndex;
 }
 
+void NodeController::testHashTable()
+{
+    testHashTable<int> tempTable;
+    HashNode<int> tempArray[10];
+    for(int spot = 0; spot < 10; spot++)
+    {
+        int randomValue = rand();
+        int randomKey = rand();
+        HashNode<int> temp = HashNode<int>(randomKey, randomValue);
+        tempTabledd(temp);
+        tempArray[spot] = temp;
+    }
+    bool test  tempTable.contains(tempArray[0]);
+    string relt;
+    if(test)
+    {
+        result = "It's there";
+    }
+    else
+    {
+        result = "Not anywhere";
+    }
+    cout << result << endl;
+
+}
+
 void NodeController::doQuick()
 {
     mergeData = new int[1000000000];
